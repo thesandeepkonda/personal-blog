@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Blog</title>
+</head>
+<body>
+  <h1>Welcome to My Blog</h1>
+  <div id="posts"></div>
+  <script>
+    fetch('/api/posts')
+      .then(res => res.json())
+      .then(posts => {
+        document.getElementById('posts').innerHTML = 
+          posts.map(p => `<h2>${p.title}</h2><p>${p.content}</p>`).join('');
+      });
+  </script>
+</body>
+</html>
